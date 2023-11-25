@@ -14,7 +14,7 @@ const App=()=> {
   const init= ()=>{
     console.log("on init");
     AdminMutation.getProducts()
-    .then((ans)=>console.log(ans));
+    .then((ans)=>console.log(ans.data.code));
   }
 
   return (
