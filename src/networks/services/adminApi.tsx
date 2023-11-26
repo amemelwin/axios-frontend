@@ -5,6 +5,7 @@ import config from "../config";
 const instance = axios.create({
     baseURL:config.baseURL+"/admin", // baseUrl : http://localhost:8080/api/v1/admin
     headers:{
+        "Authorization":"Bearer "+ localStorage.getItem("token"),
         common:{
             "Content-Type":"application/json",
             "Authorization":"Bearer "+ localStorage.getItem("token")

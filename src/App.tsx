@@ -1,6 +1,9 @@
 import mutations from "@/networks/mutations";
 import { useEffect, useState } from 'react';
 import { GlobalPropType } from './globalPropType';
+import AdminRouterView from "./navigations/AdminRouterView";
+import AuthRouterView from "./navigations/AuthRouterView";
+import UserRouterView from "./navigations/UserRouterView";
 
 const App=()=> {
   
@@ -25,11 +28,10 @@ const App=()=> {
   }
 
   return (
-    <div className="text-green-600 text-center" > A Mie</div>
-    // isLogin ? 
-    //   isAdmin?
-    //     <AdminRouterView  globalProps={globalProps}/> : <UserRouterView globalProps={globalProps}/>
-    // : <AuthRouterView globalProps={globalProps}/>
+    isLogin ? 
+      isAdmin?
+        <AdminRouterView  globalProps={globalProps}/> : <UserRouterView globalProps={globalProps}/>
+    : <AuthRouterView globalProps={globalProps}/>
   )
 }
 

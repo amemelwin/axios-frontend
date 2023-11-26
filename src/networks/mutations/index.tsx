@@ -1,19 +1,7 @@
-import adminApi from "../services/adminApi";
-import authApi from "../services/authApi";
-
-type LoginRequest ={
-    email: string;
-    password: string;
-}
+import admin from "./admin";
+import auth from "./auth";
 const mutations = {
-    auth: {
-        login :  (LoginRequest:LoginRequest)=>authApi.post("/login",LoginRequest),
-    },
-    admin:{
-        product :{
-            get: ()=>adminApi.get("/products"),
-            index: (id:number)=>adminApi.get(`/products/${id}`)
-        }
-    }
+    auth,
+    admin
 }
 export default mutations;
