@@ -13,9 +13,10 @@ const App=()=> {
 
   const init= ()=>{
     console.log("on init");
-    AdminMutation.getCountryList()
+
+    AdminMutation.getTest()
     .then((ans)=>{
-      console.log(ans);
+      console.log(ans.data);
     });
   }
 
