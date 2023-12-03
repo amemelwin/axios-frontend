@@ -1,13 +1,12 @@
 import adminApi from "@/networks/services/adminApi";
-type productCreateReq = {
-    price: number,
-     stock: number,
-     product_name: string 
- 
- }
+import create from "./createProduct";
+import deleteProduct from "./deleteProduct";
+import get from "./getProducts";
+
 const product = {
-    get: ()=>adminApi.get("/products"),
+    get,
     index: (id:number)=>adminApi.get(`/products/${id}`),
-    create:(product:productCreateReq)=>adminApi.post("/products",product)
+    create,
+    delete: deleteProduct
 }
 export default product;

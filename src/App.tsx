@@ -1,9 +1,9 @@
-import mutations from "@/networks/mutations";
 import { useEffect, useState } from 'react';
 import { GlobalPropType } from './globalPropType';
 import AdminRouterView from "./navigations/AdminRouterView";
 import AuthRouterView from "./navigations/AuthRouterView";
 import UserRouterView from "./navigations/UserRouterView";
+import mutations from './networks/mutations';
 
 const App=()=> {
   

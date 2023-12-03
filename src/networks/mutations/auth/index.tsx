@@ -1,10 +1,5 @@
-import authApi from "@/networks/services/authApi";
-
-type LoginRequest ={
-    email: string;
-    password: string;
-}
+import login from "./login";
 const auth = {
-    login :  (LoginRequest:LoginRequest)=>authApi.post("/login",LoginRequest),
+    login,
 }
 export default auth;

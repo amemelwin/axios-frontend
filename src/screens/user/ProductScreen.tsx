@@ -1,5 +1,6 @@
 import DialogBox from "@/components/DialogueComponent";
 import LoginInput from "@/components/common/LoginInputComponent";
+import SizeBox from "@/components/common/SizeBox";
 import { GlobalPropType } from "@/globalPropType";
 import { ProductCreateErrType, ProductType } from "@/types/product/productType";
 import { useEffect, useState } from "react";
@@ -16,10 +17,6 @@ const ProductScreen = ({mutations}:GlobalPropType)=>{
     const [productStock,setProductStock] = useState<string>('');
     const [productStockErr,setProductStockErr] = useState<string>('');
     const [errMsg,setErrMsg] = useState<string>('');
-
-    const SizeBox = ({w,h}:{w?:number,h?:number})=>{
-        return <div style={{height:h, width:w}}></div>
-    }
 
     const createProductAction = ()=>{
         setErrMsg('');
@@ -47,32 +44,15 @@ const ProductScreen = ({mutations}:GlobalPropType)=>{
             
 
         })
-        // mutations.admin.product.create({product_name:productName,price:parseInt(productPrice),stock:parseInt(productStock)})
-        // .then((ans)=>{
-        //     console.log(ans.data.data);
-        //     setProductsList([ans.data.data,...productsList]);
-        //     setProductCreateDialog(false);
-
-        // })
-        // .catch((error)=>console.log(error.data));
-        // console.log("product : ",productName,productPrice,productStock);
     }
 
-    const deleteAction = (productId:number)=>{
-        mutations.admin.product.delete(productId)
-        .then((ans)=>{
-            setProductsList( productsList.filter(({product_id})=>product_id !== productId) )
-            
-            console.log(ans.message);
-        })
-        .catch((err:string)=>{
-            console.log(err);
-        })
+    const addCartAction = (productId:number)=>{
+       console.log(productId);
     }
 
     useEffect(()=>{
         if(productsList.length<1){
-            mutations.admin.product.get()
+            mutations.user.product.get()
             .then((ans)=>{
                 setProductsList(ans);
             })
@@ -92,7 +72,7 @@ const ProductScreen = ({mutations}:GlobalPropType)=>{
                     </div>
                     <div className="text-green-500 text-left">stock: <span className="ml-2">{stock}</span></div>
                 </div>
-                <div onClick={()=>deleteAction(product_id)} className=" text-red-500">delete</div>
+                <div onClick={()=>addCartAction(product_id)} className=" text-green-500">Add To Cart</div>
                 </div>
              })}
              </div>

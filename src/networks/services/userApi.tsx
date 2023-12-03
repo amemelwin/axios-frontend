@@ -11,6 +11,12 @@ const instance = axios.create({
         }
     }
 })
+// for reactive token when updating
+instance.interceptors.request.use(function (config) {
+    const token = localStorage.getItem('token');
+    config.headers.Authorization =  token ? `Bearer ${token}` : '';
+    return config;
+});
 
 // Now ready to use with default baseUrl and header
 const userApi = {
